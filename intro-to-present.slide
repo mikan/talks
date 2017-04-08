@@ -1,0 +1,140 @@
+present でスライドを作ろう😆
+横浜Go読書会 #6
+13 May 2017
+
+Yutaka Kato
+DXC Technology
+https://github.com/mikan
+
+* present とは？
+
+- `golang.org/x/tools/present` というプレゼンツール
+- Go talks (talks.golang.org) などで使われている
+- 導入＆起動がめっちゃ簡単！
+.code res/intro-to-present/setup.txt
+
+💡 デフォルトは 3999 ポート
+
+: すごーい！
+: たーのしー！
+
+⚠️ go doc 見るときはパッケージに注意
+
+- `golang.org/x/tools/present` (書式の説明)
+- `golang.org/x/tools/cmd/present` (ツールそのものの説明)
+
+* つくりかた
+
+1️⃣ present を起動しておく
+2️⃣ (present を起動した) カレントディレクトリで `xxx.slides` を作る
+
+.code res/intro-to-present/header.txt
+
+3️⃣  ブラウザを再読み込みし、表示された `xxx.slides` のリンクを開く
+
+💡 拡張子を `.article` にするとブログ記事みたいなレイアウトで出力される
+
+* こうなるよ！
+
+.image res/intro-to-present/sample.png _ 1000
+
+スライドめくりは十字キーで行う
+
+💡 タイトル以外は任意です
+
+* 書式
+
+箇条書き
+
+  - 箇条書き1
+  - 箇条書き2
+
+成形済テキスト
+
+  本文
+  
+  　　ここが成形済テキストとして表示される (左にスペース2つ)
+
+フォント
+
+  _斜体_
+  *太字*
+  `プログラム`
+
+💡 絵文字も斜体にできる！ _🆒_
+
+* コマンド
+
+.background res/intro-to-present/background.png
+
+.code res/intro-to-present/commands.txt
+
+- `code` - 指定したファイルを読み込んで表示 (範囲指定や行番号表示にも対応)
+- `play` - 指定した Go コードを表示し・・・ Playground で動かすボタンを設置！
+- `image` / `.video` - 指定した画像・動画を表示 (「10 20」「_ 300」等で `px` 指定可能)
+- `background` - 指定した画像を背景に表示
+- `iframe` / `html` - 指定した URL / HTML を埋め込み
+- `link` - URL をクリックできるリンクとして表示
+- `caption` - 直近の要素に対して見出しを付ける
+
+* Let's play!
+
+.play -numbers -edit res/intro-to-present/expand.go
+.caption _gopl_ch05/ex09_ at [[https://github.com/mikan/go-training-course][mikan/go-training-course]]
+
+* 絵文字
+
+Unicode の絵文字に対応しているので、コピペするだけ😉
+
+コピペ用絵文字辞典:
+
+.link http://getemoji.com/ 😋 Get Emoji — List of all Emojis to ✂️ Copy and 📋 Paste 👌
+
+.image res/intro-to-present/getemoji.png 300 _
+
+⚠️ エディタが対応していないとうまく貼れないかも！
+
+* 発表者ノート
+
+本文中に `: xxx` でコメントを入れられる
+
+  : コメント第一段落
+  : コメント第二段落
+
+`present` の起動時のオプションで `-notes=true` を指定し、スライドが開いたら `N` キーを押すと、スライドめくりに連動して動く発表者ノート専用画面がオープン！
+
+.image res/intro-to-present/presenter-notes.png 300 _
+
+* コマンドラインオプション一覧
+
+- `-base=""`: スライドテンプレートや静的リソースへのベースパス
+- `-http="127.0.0.1:3999"`: HTTP サーバーアドレス
+- `-nacl=false`: Native Client environment playground の使用 (Go コード以外の実行の防止)
+- `-notes=false`: 発表者ノートの有効化 ('N' キーでブラウザ表示)
+- `-orighost=""`: host component of web origin URL ('localhost' など)
+- `-play=true`: playground 有効化 (任意のユーザーコードの実行を許可)
+
+💡 Playground がうまく動かないときはオプションを見直そう
+
+* 公開
+
+.link http://go-talks.appspot.com go-talks.appspot.com
+
+GitHub 等のパブリックリポジトリにプッシュすれば、表示してくれるサービス
+
+アクセス方法:
+
+  http://go-talks.appspot.com/github.com/owner/project/file.ext
+  http://go-talks.appspot.com/github.com/owner/project/sub/directory/file.ext
+
+💡 go-talks.appspot.com のトップページ自体もこれで生成されたもの (`.article` 版)
+
+* (こぼれ話) スライドデザインのカスタマイズ
+
+- 今のところ正式にサポートしていない
+- むしろカスタマイズなしで使うことに美学すら感じる😇
+- でもやっぱりカスタマイズに手を染めている人はいる
+
+.link https://github.com/davelaursen/present-plus
+
+・・・今後に期待？
