@@ -26,11 +26,11 @@ https://github.com/mikan
 * つくりかた
 
 1️⃣ present を起動しておく
-2️⃣ (present を起動した) カレントディレクトリで `xxx.slides` を作る
+2️⃣ (present を起動した) カレントディレクトリで `xxx.slide` を作る
 
 .code res/intro-to-present/header.txt
 
-3️⃣  ブラウザを再読み込みし、表示された `xxx.slides` のリンクを開く
+3️⃣  ブラウザを再読み込みし、表示された `xxx.slide` のリンクを開く
 
 💡 拡張子を `.article` にするとブログ記事みたいなレイアウトで出力される
 
