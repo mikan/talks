@@ -65,7 +65,7 @@ https://github.com/mikan
 
 * コマンド
 
-.background res/intro-to-present/bg.gif
+.background https://raw.githubusercontent.com/mikan/talks/master/res/intro-to-present/bg.png
 
 .code res/intro-to-present/commands.txt
 
