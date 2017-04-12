@@ -65,17 +65,17 @@ https://github.com/mikan
 
 * コマンド
 
-.background res/intro-to-present/background.png
+.background res/intro-to-present/bg.gif
 
 .code res/intro-to-present/commands.txt
 
-- `code` - 指定したファイルを読み込んで表示 (範囲指定や行番号表示にも対応)
-- `play` - 指定した Go コードを表示し・・・ Playground で動かすボタンを設置！
-- `image` / `.video` - 指定した画像・動画を表示 (「10 20」「_ 300」等で `px` 指定可能)
-- `background` - 指定した画像を背景に表示
-- `iframe` / `html` - 指定した URL / HTML を埋め込み
-- `link` - URL をクリックできるリンクとして表示
-- `caption` - 直近の要素に対して見出しを付ける
+- `.code` - 指定したファイルを読み込んで表示 (範囲指定や行番号表示にも対応)
+- `.play` - 指定した Go コードを表示し・・・ Playground で動かすボタンを設置！
+- `.image` / `.video` - 指定した画像・動画を表示 (「10 20」「_ 300」等で `px` 指定可能)
+- `.background` - 指定した画像を背景に表示
+- `.iframe` / `html` - 指定した URL / HTML を埋め込み
+- `.link` - URL をクリックできるリンクとして表示
+- `.caption` - 直近の要素に対して見出しを付ける
 
 * Let's play!
 
