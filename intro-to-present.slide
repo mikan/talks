@@ -63,6 +63,17 @@ https://github.com/mikan
 
 💡 絵文字も斜体にできる！ _🆒_
 
+* 絵文字
+
+Unicode の絵文字に対応しているので、コピペするだけ😉
+
+コピペ用絵文字辞典:
+.link http://getemoji.com
+
+.image res/intro-to-present/getemoji.png 300 _
+
+⚠️ エディタが対応していないとうまく貼れないかも！
+
 * コマンド
 
 .background https://raw.githubusercontent.com/mikan/talks/master/res/intro-to-present/bg.png
@@ -81,18 +92,6 @@ https://github.com/mikan
 
 .play -numbers -edit res/intro-to-present/expand.go
 .caption _gopl_ch05/ex09_ at [[https://github.com/mikan/go-training-course][mikan/go-training-course]]
-
-* 絵文字
-
-Unicode の絵文字に対応しているので、コピペするだけ😉
-
-コピペ用絵文字辞典:
-
-.link http://getemoji.com/ 😋 Get Emoji — List of all Emojis to ✂️ Copy and 📋 Paste 👌
-
-.image res/intro-to-present/getemoji.png 300 _
-
-⚠️ エディタが対応していないとうまく貼れないかも！
 
 * 発表者ノート
 
@@ -120,19 +119,25 @@ Unicode の絵文字に対応しているので、コピペするだけ😉
 
 .link http://go-talks.appspot.com go-talks.appspot.com
 
-GitHub 等のパブリックリポジトリにプッシュすれば、表示してくれるサービス
+GitHub のパブリックリポジトリにプッシュした slide や article を表示してくれるサービス
 
 アクセス方法:
 
   http://go-talks.appspot.com/github.com/owner/project/file.ext
   http://go-talks.appspot.com/github.com/owner/project/sub/directory/file.ext
 
-💡 go-talks.appspot.com のトップページ自体もこれで生成されたもの (`.article` 版)
+💡 go-talks.appspot.com のトップページ自体もこれで生成されたもの (article ファイル)
+
+💡 `.image` 等のリソースは `raw.githubusercontent.com` の直リンクになる (`.background` には効いてない⁉️)
+
+⚠️ `.html` コマンドは無効化されている
 
 * (こぼれ話) スライドデザインのカスタマイズ
 
 - 今のところ正式にサポートしていない
 - むしろカスタマイズなしで使うことに美学すら感じる😇
+
+
 - でもやっぱりカスタマイズに手を染めている人はいる
 
 .link https://github.com/davelaursen/present-plus
