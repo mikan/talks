@@ -7,14 +7,14 @@ DXC Technology
 
 * Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践
 
-.image res/ccc-vaadin-8/balloon.png
+.image res/ccc-vaadin-8/balloon.png 100 _
 
-🐦 ハッシュタグ: *#ccc_i1*
 
-本スライドの URL はこちら: *https://goo.gl/IIztDT*
+.image res/ccc-vaadin-8/qrcode.png 330 _
+
+🐦 ハッシュタグ: *#ccc_i1*  /   本スライドの URL: *https://goo.gl/IIztDT*
+
 .caption 短縮 URL の転送先: https://go-talks.appspot.com/github.com/mikan/talks/ccc-vaadin-8.slide
-
-.image res/ccc-vaadin-8/qrcode.png 240 _
 
 * Introduction
 
@@ -54,7 +54,7 @@ DXC Technology
 
 ❓ ひと昔前にちょっと流行ったアレとは違うの？ほら、Gから始まるやつ、なんだっけ
 
-👉 違います、しかし v4.1 からは内部に組み込まれており協調動作します (後ほど詳しく)
+👉 違います、しかし v4.1 からは内部に組み込まれており協調動作します (後で詳しく)
 
 * 自己紹介
 
@@ -86,7 +86,7 @@ DXC Technology
 - 読書会の課題本投票システム (趣味で制作)
 - Vaadin Framework 8 (一部 Vaadin 7 API 使用) + Spring Boot 1.5 で構築
 - OAuth (`spring-security-oauth2`) を用いた GitHub ログインを採用
-- CloudFoundry で Bluxmix にデプロイして稼働中
+- CloudFoundry で Bluemix にデプロイして稼働中
 
 .image res/ccc-vaadin-8/mosaic.png 380 _
 
@@ -115,11 +115,13 @@ DXC Technology
 - API 大幅刷新 (破壊的変更多数)
 - 旧 API も別パッケージ `com.vaadin.v7` で引き続き提供、簡易マイグレーションツールも提供
 
-* Vaadin Framework 8 の主な改良ポイント
+* Vaadin Framework 8 の主な改良ポイント (1 of 3)
 
 : What's new https://vaadin.com/framework/whatsnew
 
 - データバインディング系 API の全面刷新
+
+v 7️⃣ のコード例
 
   List<Person> persons = Backend.getPersons();
   BeanItemContainer<Person> container = new BeanItemContainer(Person.class, persons);
@@ -129,16 +131,48 @@ DXC Technology
   grid.addColumn("firstName");
   grid.getColumn("firstName").setHeaderCaption("First Name");
 
-↓
+v 8️⃣ のコード例
 
   List<Person> persons = Backend.getPersons();
   Grid<Person> grid = new Grid<>(Person.class);
   grid.setItems(persons);
   grid.addColumn(Person::getFirstName).setCaption("First Name");
 
-- リスナー系 API のジェネリック化 (超絶今更感)
+カラムのバインディングに getter, setter 等のメソッド参照が使える😃👍 
+
+* Vaadin Framework 8 の主な改良ポイント (2 of 3)
+
+- リスナー系 API のジェネリック化 (ちょっと今更感)
+
+v 7️⃣ のコード例
+
+  comboBox.addValueChangeListener(evt -> {
+    Person p = (Person) evt.getProperty().getValue();
+    assert(p.getId() == 42);
+  });
+
+v7 までは `getValue()` の戻り値は `Object` だった💩
+
+v 8️⃣ のコード例
+
+  comboBox.addValueChangeListener(evt -> {
+    assert(evt.getValue().getId() == 42);
+  });
+
+v8 でよりタイプセーフで簡潔な API に😃👍 
+
+* Vaadin Framework 8 の主な改良ポイント (3 of 3)
+
 - デフォルト値の洗練化 (`null` 値の空文字表示、適度な初期マージンの追加等)
-- その他細かい改良多数
+
+.image res/ccc-vaadin-8/null-value.png 200 _
+
+- その他細かい改良多数😀
+
+⚠️ 注意点
+
+- `Table` クラス廃止、`Grid` に一本化 (v7 API と Compatibility Server で回避可能)
+- Internet Explorer 8/9/10 サポート打ち切り
 
 * Spring Boot との出会い
 
@@ -230,16 +264,16 @@ DXC Technology
 
 Spring の機能を活用したり、既存の Spring Boot アプリに UI を追加するときなど
 
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-security')
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.security.oauth:spring-security-oauth2')
-    compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringBootVersion}")
-    compile("com.vaadin:vaadin-themes:${vaadinVersion}")
-    compile('org.vaadin.spring.addons:vaadin-spring-addon-i18n:0.0.7.RELEASE')
-    compile("com.vaadin:vaadin-compatibility-server:${vaadinVersion}")
-    runtime("com.vaadin:vaadin-compatibility-client-compiled:${vaadinVersion}")
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile('org.springframework.boot:spring-boot-starter-data-jpa')
+  compile('org.springframework.boot:spring-boot-starter-security')
+  compile('org.springframework.boot:spring-boot-starter-actuator')
+  compile('org.springframework.security.oauth:spring-security-oauth2')
+  compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringBootVersion}")
+  compile("com.vaadin:vaadin-themes:${vaadinVersion}")
+  compile('org.vaadin.spring.addons:vaadin-spring-addon-i18n:0.0.7.RELEASE')
+  compile("com.vaadin:vaadin-compatibility-server:${vaadinVersion}")
+  runtime("com.vaadin:vaadin-compatibility-client-compiled:${vaadinVersion}")
 
 .caption 自作アプリ (読書会投票アプリ) の `build.gradle` の一部
 
@@ -287,6 +321,8 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 
 - 基本的には Maven を使うのが前提 (Archetype が用意されている)
 - もちろん Gradle も使える (`mavenBom` のインポート)
+
+.image res/ccc-vaadin-8/maven+gradle.png 75 _
 
 * Vaadin を採用するモチベーション
 
