@@ -1,0 +1,320 @@
+全部 Java で作っちゃえ!😁 Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践
+JJUG CCC 2017 Spring #ccc_i1
+20 May 2017
+
+Yutaka Kato
+DXC Technology
+
+* Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践
+
+.image res/ccc-vaadin-8/balloon.png
+
+🐦 ハッシュタグ: *#ccc_i1*
+
+本スライドの URL はこちら: *https://goo.gl/IIztDT*
+.caption 短縮 URL の転送先: https://go-talks.appspot.com/github.com/mikan/talks/ccc-vaadin-8.slide
+
+.image res/ccc-vaadin-8/qrcode.png 240 _
+
+* Introduction
+
+* Vaadin はこんなフレームワーク!
+
+.code res/ccc-vaadin-8/HelloWorld.java /^public/,/^}/
+
+.image res/ccc-vaadin-8/hello-1.png 350 _
+
+* Question
+
+.image res/ccc-vaadin-8/vaadin-logo.png
+
+👉 今回 (セッションを探していて) 初めて聞いた💡
+
+👉 名前だけは以前から知っていた
+
+👉 触ったことある
+
+👉 実務で使った / 使っている
+
+👉 俺が Vaadin だ!
+
+* Vaadin って・・・
+
+❓ 誰が作ってるの？
+
+👉 フィンランド🇫🇮の Vaadin Ltd. が OSS (Apache License 2.0) で開発しています
+
+❓ Vaadin Ltd. はどうやって金儲けしてるの？
+
+👉 有償アドオン・ツールを含むサブスクリプションの他、コンサルティング、教育など
+
+❓ デザインをカスタマイズするには結局 CSS や HTML の知識いるんでしょ？
+
+👉 はい... でも標準の Valo テーマやその他既存のテーマを使いこなせば機会は減ります
+
+❓ ひと昔前にちょっと流行ったアレとは違うの？ほら、Gから始まるやつ、なんだっけ
+
+👉 違います、しかし v4.1 からは内部に組み込まれており協調動作します (後ほど詳しく)
+
+* 自己紹介
+
+- 加藤 裕 Yutaka Kato
+- Vaadin は以前所属していた会社で製品開発 (サービス契約・情報表示用コントロールパネル) に採用した経験があります
+- 技術書読書会の参加や正誤表の貢献などが趣味(?)
+- Java読書会BOF(月次/川崎)、横浜Go読書会(月次/横浜)、AOSN読書会(週次/Discord)
+
+.image res/ccc-vaadin-8/workshops.png 75 _
+
+- 現職は「DXC テクノロジー」という会社で Java や C# のシステム開発
+
+.image res/ccc-vaadin-8/dxc.png 60 _
+
+* DEMO
+
+* Vaadin Sampler
+
+.image res/ccc-vaadin-8/sampler-1.png 500 _
+.caption [[https://demo.vaadin.com/sampler/]]
+
+* Valo Theme
+
+.image res/ccc-vaadin-8/valo-1.png 500 _
+.caption [[https://demo.vaadin.com/valo-theme/]]
+
+* 自作アプリ
+
+- 読書会の課題本投票システム (趣味で制作)
+- Vaadin Framework 8 (一部 Vaadin 7 API 使用) + Spring Boot 1.5 で構築
+- OAuth (`spring-security-oauth2`) を用いた GitHub ログインを採用
+- CloudFoundry で Bluxmix にデプロイして稼働中
+
+.image res/ccc-vaadin-8/mosaic.png 380 _
+
+* Vaadin が公開している成功事例など
+
+.image res/ccc-vaadin-8/success-stories-1.png 500 _
+.caption [[https://vaadin.com/success-stories]]
+
+* なぜいま Vaadin か？
+
+* Vaadin Framework 発展の歴史
+
+- 2002年12月 Millstone Library 3.0.0 リリース (LGPL v2, これ以前はクローズドで開発)
+- 2007年3月 IT Mill Toolkit 4.0 リリース (プロプライエタリライセンス😅)
+- 2007年12月 IT Mill Toolkit 4.1 リリース (Apache License 2.0 に変更😃)
+- 2009年5月 Vaadin 6.0.0 リリース (名前変わった😶)
+- 2017年2月 Vaadin Framework 8.0 リリース (名前変わった🙃)
+
+.image res/ccc-vaadin-8/reindeer-theme-1.png 270 _
+.caption ひと昔前の標準テーマ [[https://demo.vaadin.com/ReindeerTheme][demo.vaadin.com/RaindeerTheme]]
+
+* Vaadin Framework 8 の登場
+
+.image res/ccc-vaadin-8/vaadin-8-release.png 400 _
+
+- API 大幅刷新 (破壊的変更多数)
+- 旧 API も別パッケージ `com.vaadin.v7` で引き続き提供、簡易マイグレーションツールも提供
+
+* Vaadin Framework 8 の主な改良ポイント
+
+: What's new https://vaadin.com/framework/whatsnew
+
+- データバインディング系 API の全面刷新
+
+  List<Person> persons = Backend.getPersons();
+  BeanItemContainer<Person> container = new BeanItemContainer(Person.class, persons);
+  Grid grid = new Grid();
+  grid.setContainerDataSource(container);
+  grid.removeAllColumns();
+  grid.addColumn("firstName");
+  grid.getColumn("firstName").setHeaderCaption("First Name");
+
+↓
+
+  List<Person> persons = Backend.getPersons();
+  Grid<Person> grid = new Grid<>(Person.class);
+  grid.setItems(persons);
+  grid.addColumn(Person::getFirstName).setCaption("First Name");
+
+- リスナー系 API のジェネリック化 (超絶今更感)
+- デフォルト値の洗練化 (`null` 値の空文字表示、適度な初期マージンの追加等)
+- その他細かい改良多数
+
+* Spring Boot との出会い
+
+- もともと Vaadin4Spring プロジェクトにより、Spring Framework との組み合わせでも動作していたが、その後 Spring Boot にも対応
+- UI クラスに `@SpringUI`、View クラスに `@SpringView` アノテーション (いずれも `com.vaadin.spring.annotation`) をつけるだけ
+
+.image res/ccc-vaadin-8/spring-initializr-1.png 350 _
+.caption [[https://start.spring.io][Spring Initializr]] にも対応 (Vaadin Framework 8.0.x 設定済)
+
+* Vaadin の動作原理と GWT との関係
+
+* まずは全体を俯瞰すると・・・
+
+サーバーサイドのアプリケーションが専用のクライアントエンジンと協調して動作する
+
+.image res/ccc-vaadin-8/book-of-vaadin-7/architecture-detailed-hi.png 470 _
+.caption Source: Book of Vaadin (v7)
+
+* 時系列で見ると・・・
+
+超ざっくり書くとこんな感じ
+
+.image res/ccc-vaadin-8/overview-sd.png 500 _
+
+* 魔法のクライアントサイドエンジン
+
+ブラウザで (Java 製の) ウィジェットを動かす為に使うのが *GWT* (Google Web Toolkit)
+
+.image res/ccc-vaadin-8/book-of-vaadin-8/clientside-arch.png 470 _
+.caption Source: Book of Vaadin (v8)
+
+* 自作のコンポーネントを作るには
+
+仕組みを理解した上で必要な拡張ポイントを利用して開発する必要がある (難易度高め)
+
+.image res/ccc-vaadin-8/book-of-vaadin-8/widget-integration-hi.png 470 _
+.caption Source: Book of Vaadin (v8)
+
+* 有償機能とテスト戦略
+
+* Vaadin の有償機能
+
+- Vaadin Designer (UI デザイナーツール、Eclipse, IntelliJ プラグイン)
+- Vaadin Chart (美麗なグラフやチャートを描画するアドオン)
+- Vaadin TestBench (UI・リグレッションテストツールキット)
+- Vaadin Board 🆕 (ダッシュボード的なレイアウト向けアドオン)
+- Vaadin TouchKit (タッチ操作用追加 API、v8 からフリー化)
+
+: https://vaadin.com/blog/-/blogs/touchkit-is-dead-long-live-touchkit
+
+.image res/ccc-vaadin-8/vaadin-online-store.png 300 _
+
+* リグレッションテストどうする!?
+
+➡️ Vaadin TestBench で Java のコードでボタン等指定して回す
+
+- ご予算があれば一番快適な選択肢
+
+.image res/ccc-vaadin-8/book-of-vaadin-8/webdriver-use-lo.png 180 _
+
+➡️ Selenium 等で DOM 取り出してごにょごにょする
+
+- 既にご経験があればこれが一番良い (Vaadin の吐く DOM はさほど難しくない)
+- Vaadin TestBench も内部で Selenium を使っている
+
+💡 TestBench のコード自体は公開されている (github.com/vaadin/testbench)
+
+* E2E テスト時の勘所 (こぼれ話)
+
+セッション切れを検知すると、画面に表示がでる (Valo Theme の例)
+
+.image res/ccc-vaadin-8/vaadin-session-expired-edit.png 150 _
+
+接続断を検知すると次のような表示がでる (内容だけ日本語に差し替えてみたもの)
+
+.image res/ccc-vaadin-8/mosaic-connection-dead.png 100 _
+
+💡 パラメータを調整したり、表示内容のローカライズや差し替え、見た目や表示位置の変更等を検討してみよう
+
+* 実際の開発構成と開発環境 (IDE)
+
+* アプリケーション構成の選択
+
+➡️ Vaadin を素で使う
+
+内蔵 Jetty コンテナでサクッと動かすことが可能、シンプルでデバッグ時の切り分けも比較的容易、ドキュメントも充実
+
+➡️ Spring Boot と組み合わせて使う
+
+Spring の機能を活用したり、既存の Spring Boot アプリに UI を追加するときなど
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.security.oauth:spring-security-oauth2')
+    compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringBootVersion}")
+    compile("com.vaadin:vaadin-themes:${vaadinVersion}")
+    compile('org.vaadin.spring.addons:vaadin-spring-addon-i18n:0.0.7.RELEASE')
+    compile("com.vaadin:vaadin-compatibility-server:${vaadinVersion}")
+    runtime("com.vaadin:vaadin-compatibility-client-compiled:${vaadinVersion}")
+
+.caption 自作アプリ (読書会投票アプリ) の `build.gradle` の一部
+
+* 開発環境 (1 of 2)
+
+.image res/ccc-vaadin-8/eclipse.png 60 _
+.caption for Java EE Developers
+
+✅ プロジェクト作成・通常開発
+✅ テーマ・ウィジェット作成支援 (プラグイン)
+✅ Vaadin Designer 対応
+
+.image res/ccc-vaadin-8/nekobean.png 70 _
+.caption Java EE download bundle
+
+✅ プロジェクト作成・通常開発
+✅ テーマ・ウィジェット作成支援 (プラグイン)
+❌ Vaadin Designer 対応
+
+* 開発環境 (2 of 2)
+
+.image res/ccc-vaadin-8/intellij-idea.png 60 _
+.caption Ultimate
+
+✅ プロジェクト作成・通常開発
+✅ テーマ・ウィジェット作成支援 (ビルトイン)
+✅ Vaadin Designer 対応
+
+.image res/ccc-vaadin-8/intellij-idea.png 60 _
+.caption Community
+
+⚠️ プロジェクト作成・通常開発 (支援はないが開発には支障なし)
+❌ テーマ・ウィジェット作成支援
+✅ Vaadin Designer 対応
+
+* 開発環境まとめ
+
+何を選ぶか？
+
+- Vaadin 的ファーストチョイスは Eclipse で、プラグインが最も成熟している
+- すでに IntelliJ をお使いならそのままでOK + Ultimate なら更に便利に
+- 有償契約するなら Vaadin Designer が使える Eclipse か IntelliJ を用意しておきたい
+
+ビルドシステムは？
+
+- 基本的には Maven を使うのが前提 (Archetype が用意されている)
+- もちろん Gradle も使える (`mavenBom` のインポート)
+
+* Vaadin を採用するモチベーション
+
+* 私が考える Vaadin を採用するモチベーション
+
+1️⃣ フロントとバックで型を共通化したい
+
+- Vaadin なら、バックエンドの型の破壊的変更が、即フロントエンド側のコンパイルエラーとしてフィードバック
+- テストの軽量化・高速化や修正箇所の局所化などにも効果あり
+
+2️⃣ JS や HTML5 に堪能な人材がチームにいなくても Web UI を開発をしたい
+
+- AWT/Swing 等の経験を基礎に、少ない学習コストで Web UI 開発者にコンバート
+- データのエスケープなども Framework が透過的に行うため、Web 系入門者も安心
+
+3️⃣ 俺(私)は Java (JVM 言語) が書きたいんだ！
+
+- Vaadin Framework 8 なら API も洗練されており、Java 8 との相性も抜群
+- ZK 等他のサーバーサイド Java UI フレームワークよりも先進的で、テーマも綺麗
+
+* まとめ
+
+- 今年2月に登場した Vaadin Framework 8 は Java 8 や Spring Boot など最新のテクノロジーと相性が良い
+
+- Vaadin Framework はやや複雑な動作原理で機能しており、カスタマイズする際にはその把握が重要になる
+
+- Vaadin Ltd. は様々な有償オプションを提供しており、ニーズや予算によっては使ってみるのも悪くない
+
+- Vaadin Framework を採用すると、Java エンジニアの仕事の幅が広がる
+
+Happy hacking!
