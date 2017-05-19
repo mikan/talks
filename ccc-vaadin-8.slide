@@ -298,15 +298,15 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 .image res/ccc-vaadin-8/eclipse.png 60 _
 .caption for Java EE Developers
 
-✅ プロジェクト作成・通常開発
-✅ テーマ・ウィジェット作成支援 (プラグイン)
+✅ プロジェクト作成・通常開発 (公式プラグイン)
+✅ テーマ・ウィジェット作成支援 (〃)
 ✅ Vaadin Designer 対応
 
 .image res/ccc-vaadin-8/nekobean.png 70 _
 .caption Java EE download bundle
 
-✅ プロジェクト作成・通常開発
-✅ テーマ・ウィジェット作成支援 (プラグイン)
+✅ プロジェクト作成・通常開発 (公式プラグイン)
+✅ テーマ・ウィジェット作成支援 (〃)
 ❌ Vaadin Designer 対応
 
 * 開発環境 (2 of 2)
@@ -314,8 +314,8 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 .image res/ccc-vaadin-8/intellij-idea.png 65 _
 .caption Ultimate
 
-✅ プロジェクト作成・通常開発
-✅ テーマ・ウィジェット作成支援 (ビルトイン)
+✅ プロジェクト作成・通常開発 (ビルトイン)
+✅ テーマ・ウィジェット作成支援 (〃)
 ✅ Vaadin Designer 対応
 
 .image res/ccc-vaadin-8/intellij-idea.png 65 _
