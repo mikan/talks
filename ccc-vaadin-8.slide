@@ -4,15 +4,15 @@ JJUG CCC 2017 Spring #ccc_i1
 
 Yutaka Kato
 DXC Technology
+https://mikan.github.io/
 
-* Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践
+* #ccc_i1 Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践
 
 .image res/ccc-vaadin-8/balloon.png 100 _
 
-
 .image res/ccc-vaadin-8/qrcode.png 330 _
 
-🐦 ハッシュタグ: *#ccc_i1*  /   本スライドの URL: *https://goo.gl/IIztDT*
+本スライドの URL: *https://goo.gl/IIztDT*
 
 .caption 短縮 URL の転送先: https://go-talks.appspot.com/github.com/mikan/talks/ccc-vaadin-8.slide
 
@@ -167,6 +167,8 @@ v8 でよりタイプセーフで簡潔な API に😃👍
 
 .image res/ccc-vaadin-8/null-value.png 200 _
 
+- `DateField` が Java SE 8 の Date Time API に対応
+
 - その他細かい改良多数😀
 
 ⚠️ 注意点
@@ -181,6 +183,20 @@ v8 でよりタイプセーフで簡潔な API に😃👍
 
 .image res/ccc-vaadin-8/spring-initializr-1.png 350 _
 .caption [[https://start.spring.io][Spring Initializr]] にも対応 (Vaadin Framework 8.0.x 設定済)
+
+* なぜいま Vaadin か？ (まとめ)
+
+.image res/ccc-vaadin-8/java8.png 120 _
+
+API の改良により、Java 8 の言語機能、SE 8 の API との親和性が向上した
+
+➡️ より安全、モダンで生産性の高い API に進化
+
+.image res/ccc-vaadin-8/springboot.png 120 _
+
+Spring Framework, Spring Boot との連携が強化された
+
+➡️ Spring の機能を活かした Java Web アプリケーション開発に適用可能
 
 * Vaadin の動作原理と GWT との関係
 
@@ -295,14 +311,14 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 
 * 開発環境 (2 of 2)
 
-.image res/ccc-vaadin-8/intellij-idea.png 60 _
+.image res/ccc-vaadin-8/intellij-idea.png 65 _
 .caption Ultimate
 
 ✅ プロジェクト作成・通常開発
 ✅ テーマ・ウィジェット作成支援 (ビルトイン)
 ✅ Vaadin Designer 対応
 
-.image res/ccc-vaadin-8/intellij-idea.png 60 _
+.image res/ccc-vaadin-8/intellij-idea.png 65 _
 .caption Community
 
 ⚠️ プロジェクト作成・通常開発 (支援はないが開発には支障なし)
@@ -330,17 +346,17 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 
 1️⃣ フロントとバックで型を共通化したい
 
-- Vaadin なら、バックエンドの型の破壊的変更が、即フロントエンド側のコンパイルエラーとしてフィードバック
+- バックエンドの型の破壊的変更が、即フロントエンドのコンパイルエラーへ
 - テストの軽量化・高速化や修正箇所の局所化などにも効果あり
 
 2️⃣ JS や HTML5 に堪能な人材がチームにいなくても Web UI を開発をしたい
 
 - AWT/Swing 等の経験を基礎に、少ない学習コストで Web UI 開発者にコンバート
-- データのエスケープなども Framework が透過的に行うため、Web 系入門者も安心
+- データのエスケープなども透過的に行うため Web 系入門者も安心
 
-3️⃣ 俺(私)は Java (JVM 言語) が書きたいんだ！
+3️⃣ 俺 (私) は Java (JVM 言語) が書きたいんだ！
 
-- Vaadin Framework 8 なら API も洗練されており、Java 8 との相性も抜群
+- Vaadin の API は改良を重ねて洗練されており、Java 8 との相性も抜群
 - ZK 等他のサーバーサイド Java UI フレームワークよりも先進的で、テーマも綺麗
 
 * まとめ
@@ -353,4 +369,4 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
 
 - Vaadin Framework を採用すると、Java エンジニアの仕事の幅が広がる
 
-Happy hacking!
+Happy hacking! 🍺
