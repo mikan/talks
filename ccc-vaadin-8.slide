@@ -173,13 +173,13 @@ v8 でよりタイプセーフで簡潔な API に😃👍
 
 ⚠️ 注意点
 
-- `Table` クラス廃止、`Grid` に一本化 (v7 API と Compatibility Server で回避可能)
+- `Table` クラス廃止、 `Grid` に一本化 (v7 API と Compatibility Server で回避可能)
 - Internet Explorer 8/9/10 サポート打ち切り
 
 * Spring Boot との出会い
 
 - もともと Vaadin4Spring プロジェクトにより、Spring Framework との組み合わせでも動作していたが、その後 Spring Boot にも対応
-- UI クラスに `@SpringUI`、View クラスに `@SpringView` アノテーション (いずれも `com.vaadin.spring.annotation`) をつけるだけ
+- UI クラスに `@SpringUI` 、View クラスに `@SpringView` アノテーション (いずれも `com.vaadin.spring.annotation`) をつけるだけ
 
 .image res/ccc-vaadin-8/spring-initializr-1.png 350 _
 .caption [[https://start.spring.io][Spring Initializr]] にも対応 (Vaadin Framework 8.0.x 設定済)
@@ -255,6 +255,24 @@ Spring Framework, Spring Boot との連携が強化された
 - Vaadin TestBench も内部で Selenium を使っている
 
 💡 TestBench のコード自体は公開されている (github.com/vaadin/testbench)
+
+* Selenide を用いた例 (1 of 2)
+
+.image res/ccc-vaadin-8/selenide.png 120 _
+.caption http://selenide.org/
+
+
+  content.addComponent(new Label("Hello World!"));
+  Button button = new Button("すごーい!", click -> Notification.show("たーのしー!"));
+  button.setId("selenide-amazing-button"); // UI テストからの参照用
+  scontent.addComponent(button);
+
+
+.image res/ccc-vaadin-8/hello-1.png 250 _
+
+* Selenide を用いた例 (2 of 2)
+
+.code res/ccc-vaadin-8/HelloWorldTest.java /^public/,/^}/
 
 * E2E テスト時の勘所 (こぼれ話)
 
