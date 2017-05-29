@@ -304,7 +304,6 @@ Spring の機能を活用したり、既存の Spring Boot アプリに UI を�
   compile('org.springframework.boot:spring-boot-starter-actuator')
   compile('org.springframework.security.oauth:spring-security-oauth2')
   compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringBootVersion}")
-  compile("com.vaadin:vaadin-themes:${vaadinVersion}")
   compile('org.vaadin.spring.addons:vaadin-spring-addon-i18n:0.0.7.RELEASE')
   compile("com.vaadin:vaadin-compatibility-server:${vaadinVersion}")
   runtime("com.vaadin:vaadin-compatibility-client-compiled:${vaadinVersion}")
