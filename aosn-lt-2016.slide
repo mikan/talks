@@ -1,0 +1,104 @@
+データで見るAOSN読書会
+AOSN Workshop "Day of the Programmer" Camp in Kinugawa ♨️
+17 Sep 2016
+
+Yutaka Kato
+https://mikan.github.io
+
+* Our Activities
+
+.image res/aosn-lt-2016/overview.png 520 _
+
+* Timeline
+
+.image res/aosn-lt-2016/timeline.png 520 _
+
+* Today's Talk
+
+.image res/aosn-lt-2016/visualize.png 300 _
+
+* Method
+
+.image res/aosn-lt-2016/method.png 520 _
+
+* Program
+
+.image res/aosn-lt-2016/program.png 520 _
+
+* Code (Fetch)
+
+.image res/aosn-lt-2016/code-fetch.png 500 _
+
+* Code (Parse)
+
+.image res/aosn-lt-2016/code-parse.png 520 _
+
+* Code (Type)
+
+.image res/aosn-lt-2016/code-type.png 520 _
+
+* Code (Push)
+
+.image res/aosn-lt-2016/code-push.png 520 _
+
+* Code (Main)
+
+.image res/aosn-lt-2016/code-main.png 520 _
+
+* Elasticsearch Setup
+
+.image res/aosn-lt-2016/es-setup.png 300 _
+
+* Oops!
+
+.image res/aosn-lt-2016/oops.png 520 _
+
+* Fix it...
+
+.image res/aosn-lt-2016/fixit.png 500 _
+
+* Setup Complete
+
+.image res/aosn-lt-2016/es-complete.png 350 _
+
+* Kibana 5!
+
+.image res/aosn-lt-2016/kibana1.png 500 _
+
+* (Sample) Kibana 4
+
+.image res/aosn-lt-2016/kibana-old.png 500 _
+
+* Make an Index
+
+.image res/aosn-lt-2016/kibana2.png 500 _
+
+* Make an Index
+
+.image res/aosn-lt-2016/kibana3.png 500 _
+
+* Let's visualize!
+
+* Number of Attendees Transition
+
+.image res/aosn-lt-2016/n-of-att-trans.png 500 _
+
+* Participation Rate Transition
+
+.image res/aosn-lt-2016/perticipation-rate-trans.png 500 _
+
+* Number of Attendees by Books
+
+.image res/aosn-lt-2016/n-of-att-books.png 500 _
+
+* Overall Attendees Ranking
+
+.image res/aosn-lt-2016/overall-att-rank.png 500 _
+
+* (New Feature) Console
+
+.image res/aosn-lt-2016/console.png 500 _
+
+* My Dashboard
+
+.image res/aosn-lt-2016/dashboard.png 500 _
