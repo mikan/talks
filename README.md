@@ -10,7 +10,7 @@ via go-talks
 | --------------------------- | ----- | ----------------- | ------------ |
 | [Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践](https://go-talks.appspot.com/github.com/mikan/talks/ccc-vaadin-8.slide) | [JJUG CCC 2017 Spring](http://www.java-users.jp/ccc2017spring/) | 20 May 2017 | 19 May 2017 |
 | [present でスライドを作ろう😆](https://go-talks.appspot.com/github.com/mikan/talks/intro-to-present.slide) | [横浜Go読書会](https://yokohama-go-reading.connpass.com/) #6 | 13 May 2017 | 14 May 2017 |
-| [データで見るAOSN読書会](https://go-talks.appspot.com/github.com/mikan/talks/aosn-lt-2016.slide) | [プログラマーの日合宿 2016](http://aosn.ws/event/3-0917camp) | 17 Sep 2017 | 30 Jun 2017 |
+| [データで見るAOSN読書会](https://go-talks.appspot.com/github.com/mikan/talks/aosn-lt-2016.slide) | [AOSN読書会 2016合宿](http://aosn.ws/event/3-0917camp) | 17 Sep 2016 | 30 Jun 2017 |
 
 via PDF
 
