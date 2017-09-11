@@ -1,0 +1,171 @@
+Slack の過去ログ倉庫を建てよう
+AOSN Workshop "Day of the Programmer" Camp in Yuwaku ♨️
+16 Sep 2017
+
+Yutaka Kato
+https://mikan.github.io
+
+* Slack は楽しい！でも・・・
+
+.image res/aosn-lt-2017/slack-limitation.png _ _
+
+- 無料版は直近1万件のメッセージしか保存されない
+- 大事な思い出が消えていくよ・・・😱 
+
+残すには？
+
+- 有償版を契約する (\960/🈷️/👽)
+- 外部に保存する💾 
+
+*外部に保存するしかない！* (お金はかけずに！)
+
+* とりあえずプロトタイピングだ！🙋‍
+
+* 今回利用するもの
+
+.image res/aosn-lt-2017/eb1.png _ 700
+
+[[https://enebular.com][enebular]] (エネブラー) というデータ連携プラットフォームを使ってみよう
+
+* ログイン
+
+.image res/aosn-lt-2017/eb2.png _ 700
+
+GitHub アカウント等でログイン可能
+
+* プロジェクト作成
+
+.image res/aosn-lt-2017/eb3.png _ 700
+
+プロジェクト名は適当に
+
+* フロー作成
+
+.image res/aosn-lt-2017/eb4.png _ 700
+
+[New Flow] をクリックすると・・・
+
+* フローエディタ起動
+
+.image res/aosn-lt-2017/eb5.png _ 700
+
+フローエディターが起動した！
+
+* Slack ノード配置
+
+.image res/aosn-lt-2017/eb6.png
+
+social 欄に Slack Bot In というノードがあるので配置
+
+Bot API Token を入れるだけ！
+
+⚠️Outgoing Webhook は未対応なので [[https://api.slack.com/bot-users][Bot Users]] が唯一の選択肢
+
+* DB ノード配置
+
+.image res/aosn-lt-2017/eb7.png _ 600
+
+あ、MongoDB しかないんだ・・・まあいいや、[[http://www.vultr.com/?ref=7053029][VULTR VPS]] 東京リージョンで運用しているインスタンス ([[https://jm.tasktoys.com][John Metro]] 用) があるのでそいつを間借りしよう
+
+* データ連携
+
+Slack ノードが提供するもの (仕様の概要は info タブ参照)
+
+- `msg.payload` - incoming message 👈これだけじゃちょっと・・・
+- `msg.slackObj` - full Slack message details 👈コレダ！！！
+
+MongoDB ノードが扱うもの
+
+- `msg.payload`
+
+そのまま繋ぐとメッセージ本文だけが DB に格納されるだけになりそう、さあどうする・・・？
+
+.image res/aosn-lt-2017/eb8.png
+
+💡 とりあえず Function ノードを置いてみる
+
+* コーディング！ ←たった2行！ ←自分が書いたの1行！
+
+.image res/aosn-lt-2017/eb9.png 550 _
+
+* 完成！
+
+.image res/aosn-lt-2017/eb10.png _ 900
+
+`slackObj` にタイムスタンプがなかったので挿入する処理も追加してみた
+
+  msg.slackObj.time = new Date();
+
+⚠️時刻はUTCで記録されるので注意
+
+右上の「Deploy」ボタンを押せば配備完了！
+
+* 動作確認
+
+.image res/aosn-lt-2017/debug.png _ 700
+
+ばっちり！👌
+
+* 実戦配備の検討
+
+enebular は 30 分アクセスがないとインスタンスがスリープする仕様 (無料サービス故...) なので、このままでは運用できない😟 代替策は・・・
+
+- enebular の "Export to Other Services" 機能を使って AWS Lambda, AWS IoT へデプロイする (今回のフローでは Lambda は無理)
+- enebular のフローは Node.js 上の Node-RED という OSS で実現しているので、これを自前で立ててフロー (JSON形式) を移植する
+- Node-RED の本家ともいえる IBM Bluemix でインスタンスを立てる (簡単に立ち上げられるボイラープレートあり)
+
+💡 GitHub で [[https://github.com/enebular/enebular-agent][enebular-agent]] も公開されている
+
+* 実戦配備
+
+今回は VULTR VPS 上で素の Node-RED を立ち上げ、DB はプロトと同じもの、Node-RED 画面の認証には読書会メンバー用の LDAP を採用した環境構築を実施
+
+.image res/aosn-lt-2017/nr1.png _ 600
+
+➡️ [[https://nodered.aosn.ws][https://nodered.aosn.ws]] でアクセス可能！
+
+* 現在の運用状況
+
+.image res/aosn-lt-2017/nr2.png
+
+分岐ノードを配置すれば場合分けも (コードではなく) 視覚的に表現できる
+
+💡 みんなで使える Slack ボット基盤として活用していきたいところ
+
+* 検索編🔍
+
+* アプローチ
+
+- 今回は蓄積がメインなので検索はシンプルな機能に留める
+- あとでニーズが出てきたら Elasticsearch 等に食わせて全文検索とかも検討
+
+今回は以下の構成でさくっと作ってみた:
+
+- アプリケーションサーバー: Node.js
+- Web フレームワーク: Express
+- テンプレートエンジン: Jade
+- LDAP認証: passport-ldapauth
+- UI 飾り付け: Bootstrap
+
+作ったアプリは Node-RED を立ち上げたのと同じノリで配備
+
+* LDAP 認証画面
+
+.image res/aosn-lt-2017/wr1.png _ 750
+
+➡️ [[https://slacklog.aosn.ws][https://slacklog.aosn.ws]] でアクセス可能！
+
+* 過去ログ検索画面
+
+.image res/aosn-lt-2017/wr2.png _ 750
+
+検索は1語のみ😐 チャンネル絞込はできるけど一覧はハードコード😐
+
+* 今後の課題
+
+- やはり全文検索は必要か・・・？ (日本語形態素解析もやらないと)
+- チャンネル一覧は Slack API から取ってきたものを差し込みたい
+- 同じノリでユーザー絞込機能もあったらいいかな
+- 時間こっからここまで指定とかも欲しいよね
+
+課題が山盛りだー🙌 
