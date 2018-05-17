@@ -1,0 +1,80 @@
+5分で<s>わかる</s>わからない Amazon FreeRTOS
+Tech 🍣 Night
+18 May 2018
+
+Yutaka Kato
+Uhuru Corporation
+
+* よみかた
+
+- 「あまぞん ふりーあるとす」👈 ねいてぃゔ
+- 「あまぞん ふりーあーるてぃーおーえす」👈 別にこっちでもいいと思う
+
+.image res/amazon-freertos-5min/youtube.png 500 _
+
+* わかるかな？
+
+おそらく・・・
+
+- Amazon 👈 わかる 😃
+- Free 👈 わかる 😃
+- RTOS 👈 なんとなくわかる 😅
+- FreeRTOS 👈 知らんがな 😄
+
+* (おさらい) RTOS
+
+Real-time Operating System の特徴
+
+- 指定されたタスクのデッドラインを絶対に守らせるスケジューラー
+- スケジューラーと密接に連動して応答時間を確実にする高度な割込み制御
+- リソースに絡まる様々な外乱・オーバーヘッドの可能性の排除
+- その他デッドラインを守るための様々な工夫
+
+こういった仕組みを生かして厳しい要求を達成するのが組み込みエンジニアだ！💪🏻
+
+RTOS の例
+
+- VxWorks
+- ITRON
+- mbed OS (CMSIS-RTOS RTX)
+- カスタマイズした Linux (Realtime Extensions)
+
+* FreeRTOS
+
+.image res/amazon-freertos-5min/freertos.jpg
+
+- Richard Barry 氏が 2003 年に発表
+- 主にC言語で書かれている
+- Real Time Engineers Ltd. によって保守
+- 変則 (例外付き) GPL
+
+re:Invent 2017 発表後は...
+
+- Real Time Engineers Ltd. によって保守 ➡️  AWS によって保守
+- 変則 (例外付き) GPL ➡️  MIT License
+
+* Amazon FreeRTOS
+
+Amazon FreeRTOS = FreeRTOS + *Amazon* *FreeRTOS* *Libraries*
+
+- MQTT と Device Shadow を用いたデバイスと AWS IoT Cloud のセキュアな接続
+- AWS Greengrass コアのディスカバリと接続
+- Wi-Fi 接続の管理
+- (将来の計画では OTA 更新なども)
+
+Greengrass との違い:
+
+.image res/amazon-freertos-5min/amazon-freertos-and-greengrass.png 260 _
+
+* DEMO!!!
+
+* DEMO のなかみ
+
+.image res/amazon-freertos-5min/blog-article.png 450 _
+.link https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/
+
+* まとめ
+
+- 正しい読み方は「あまぞんふりーあるとす」
+- なんか難しそう
+- やっぱ 5 分じゃわからん！
