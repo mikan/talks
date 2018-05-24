@@ -8,7 +8,7 @@ via go-talks
 
 | Title                       | Event | Presentation Date | Updated Date |
 | --------------------------- | ----- | ----------------- | ------------ |
-| [5分で~~わかる~~わからない Amazon FreeRTOS](https://go-talks.appspot.com/github.com/mikan/talks/amazon-freertos-5min.slide#1) | 社内勉強会 | 2018/05/18 | 2018/05/18 |
+| [5分で~~わかる~~わからない Amazon FreeRTOS](https://go-talks.appspot.com/github.com/mikan/talks/amazon-freertos-5min.slide#1) | 社内勉強会 | 18 May 2018 | 18 May 2018 |
 | [Slack の過去ログ倉庫を建てよう](https://go-talks.appspot.com/github.com/mikan/talks/aosn-lt-2017.slide) | [AOSN読書会 2017合宿](http://aosn.ws/event/6-0916camp) | 16 Sep 2017 | 16 Sep 2017 |
 | [AOSN読書会 年次活動報告 2017](https://go-talks.appspot.com/github.com/mikan/talks/aosn-report-2017.slide) | [AOSN読書会 2017合宿](http://aosn.ws/event/6-0916camp) | 16 Sep 2017 | 16 Sep 2017 |
 | [Vaadin 8 によるオール Java Web アプリ開発の仕組みと実践](https://go-talks.appspot.com/github.com/mikan/talks/ccc-vaadin-8.slide) | [JJUG CCC 2017 Spring](http://www.java-users.jp/ccc2017spring/) | 20 May 2017 | 19 May 2017 |
