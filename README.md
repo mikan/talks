@@ -8,6 +8,7 @@ via go-talks
 
 | Title                       | Event | Presentation Date | Updated Date |
 | --------------------------- | ----- | ----------------- | ------------ |
+| [牛のための IoT プラットフォーム U-motion®](https://speakerdeck.com/mikan/niu-falsetamefalse-iot-puratutohuomu-u-motion-r) | [E3 Engineering Mix Session vol.1](https://e3meetup.connpass.com/event/197623/) | 10 Dec 2020 | 10 Dec 2020 |
 | [AOSN読書会 年次活動報告 2018](https://go-talks.appspot.com/github.com/mikan/talks/aosn-report-2018.slide) | [AOSN読書会 2018合宿](http://aosn.ws/) | 15 Sep 2018 | 14 Sep 2018 |
 | [5分で~~わかる~~わからない Amazon FreeRTOS](https://go-talks.appspot.com/github.com/mikan/talks/amazon-freertos-5min.slide#1) | 社内勉強会 | 18 May 2018 | 18 May 2018 |
 | [Slack の過去ログ倉庫を建てよう](https://go-talks.appspot.com/github.com/mikan/talks/aosn-lt-2017.slide) | [AOSN読書会 2017合宿](http://aosn.ws/event/6-0916camp) | 16 Sep 2017 | 16 Sep 2017 |
